@@ -7,12 +7,17 @@
     <h1>Parent Page</h1>
     <iframe id="childFrame" src="iframe1.html"></iframe>
 
+    <p>Received message : <span id="emailResult"></span></p>
+
     <script>
       const SECRET_KEY = "secret";
       window.addEventListener(
         "message",
         function (e) {
           if (e.data.channel === SECRET_KEY) {
+            const result = document.getElementById("emailResult");
+            result.style.color = "green";
+            result.innerText = e.data.status;
             console.log(e.data.status);
           }
         },
