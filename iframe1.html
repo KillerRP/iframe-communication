@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Child Iframe</title>
+  </head>
+  <body>
+    <h1>Child Iframe</h1>
+    <input type="text" id="userEmail" placeholder="Enter Email..." />
+    <button onclick="sendMessageToIframe()">Login</button>
+
+    <script>
+      function sendMessageToIframe() {
+        const userEmail = document.getElementById("userEmail").value;
+        const SECRET_KEY = "secret";
+        const USER = `${userEmail} Logged in successfully`;
+        const message = {
+          channel: SECRET_KEY,
+          status: USER,
+        };
+        window.parent.postMessage(message, "*");
+      }
+    </script>
+  </body>
+</html>

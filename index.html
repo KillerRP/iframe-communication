@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IFrame Communication Demo</title>
+  </head>
+  <body>
+    <h1>Parent Page</h1>
+    <iframe id="childFrame" src="iframe1.html"></iframe>
+
+    <script>
+      const SECRET_KEY = "secret";
+      window.addEventListener(
+        "message",
+        function (e) {
+          if (e.data.channel === SECRET_KEY) {
+            console.log(e.data.status);
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
